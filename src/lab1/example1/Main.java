@@ -1,19 +1,10 @@
 package lab1.example1;
 
-import java.io.IOException;
-
 public class Main {
 
-    public static void main(String[] args) throws IOException {
-//        double x;
-//        int k;
-//        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-//        x = Double.parseDouble(reader.readLine());
-//        k = Integer.parseInt(reader.readLine());
+    public static void main(String[] args) {
         double x = Double.parseDouble(args[0]);
         int k = Integer.parseInt(args[1]);
-
-//        reader.close();
 
         double eps = Math.pow(10, k + 1);
 
@@ -28,7 +19,9 @@ public class Main {
             grade++;
             result += element;
         }
-
+        System.out.printf("%.5f", Math.exp(x));
+//        System.out.println();
+//        System.out.printf("%." + k + "f", result);
         System.out.println(Math.exp(x));
         System.out.print(result);
 

@@ -1,11 +1,19 @@
 package lab2.example11;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        List<String> list = Arrays.asList(args);
+        Scanner scanner = new Scanner(new File("src/lab2/example11/file.txt"));
+
+        List<String> list = new ArrayList<>();
+
+        while (scanner.hasNext()) {
+            list.add(scanner.next());
+        }
 
         Map<Character, Integer> map = new HashMap<>();
 
