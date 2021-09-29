@@ -34,6 +34,9 @@ public class Main {
 
         for (String str : list) {
             for (char c : str.toCharArray()) {
+                if (c == '\r') {
+                    break;
+                }
                 if (!map.containsKey(c)) {
                     map.put(c, 1);
                 } else {
@@ -41,11 +44,10 @@ public class Main {
                 }
             }
 
-            System.out.println("String #" + (strCounter++) + ": " + str);
-            for(Map.Entry<Character, Integer> pair : map.entrySet()) {
+            System.out.println("String #" + strCounter++ + ": " + str);
+            for (Map.Entry<Character, Integer> pair : map.entrySet()) {
                 System.out.println("'" + pair.getKey() + "' - " + pair.getValue());
             }
-//            System.out.println(map);
             map.clear();
         }
     }
