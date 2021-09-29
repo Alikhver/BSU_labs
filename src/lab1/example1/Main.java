@@ -14,16 +14,16 @@ public class Main {
 
         int grade = 1;
 
-        while(Math.abs(element) >= eps) {
+        while (Math.abs(element) >= eps) {
             element = func(x, grade);
             grade++;
             result += element;
         }
-        System.out.printf("%.5f", Math.exp(x));
-//        System.out.println();
-//        System.out.printf("%." + k + "f", result);
-        System.out.println(Math.exp(x));
-        System.out.print(result);
+
+        System.out.println("By Taylor's formula:");
+        System.out.printf("%." + args[1] + "f\n", result);
+        System.out.println("By Math.exp:");
+        System.out.printf("%." + args[1] + "f\n", Math.exp(x));
 
     }
 
@@ -35,6 +35,6 @@ public class Main {
         if (x == 1) {
             return 1;
         }
-        return x * fact(x-1);
+        return x * fact(x - 1);
     }
 }
