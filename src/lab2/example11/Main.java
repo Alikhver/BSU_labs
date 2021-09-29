@@ -1,18 +1,26 @@
 package lab2.example11;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
 
-        Scanner scanner = new Scanner(new File("src/lab2/example11/file.txt"));
-
         List<String> list = new ArrayList<>();
 
-        while (scanner.hasNext()) {
-            list.add(scanner.next());
+        try (Scanner scanner = new Scanner(new File("src/lab2/example11/input.txt"))) {
+            scanner.useDelimiter("\n");
+            while (scanner.hasNext()) {
+                list.add(scanner.next());
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("File has not been found");
+            System.exit(0);
+        } catch (Exception e) {
+            System.out.println("Invalid entry file");
+            System.exit(0);
         }
 
         Map<Character, Integer> map = new HashMap<>();
@@ -33,8 +41,11 @@ public class Main {
                 }
             }
 
-            System.out.println("String #" + strCounter++ + ": " + str);
-            System.out.println(map);
+            System.out.println("String #" + (strCounter++) + ": " + str);
+            for(Map.Entry<Character, Integer> pair : map.entrySet()) {
+                System.out.println("'" + pair.getKey() + "' - " + pair.getValue());
+            }
+//            System.out.println(map);
             map.clear();
         }
     }

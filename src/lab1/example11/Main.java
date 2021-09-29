@@ -1,6 +1,7 @@
 package lab1.example11;
 
 public class Main {
+
     public static void main(String[] args) {
 
         double x = Double.parseDouble(args[0]);
@@ -12,27 +13,30 @@ public class Main {
 
         double element = x;
 
+        double prev = 1;
+
         int grade = 1;
 
-        while(Math.abs(element) >= eps) {
-            element = func(x, grade);
+        while (Math.abs(element) >= eps) {
+            element = func(x, prev, grade);
             grade += 2;
             result += element;
+            prev = element;
         }
 
-        System.out.println(Math.sinh(x));
-        System.out.print(result);
+        System.out.println("By Taylor's formula:");
+        System.out.printf("%." + args[1] + "f\n", result);
+        System.out.println("By Math.sinh:");
+        System.out.printf("%." + args[1] + "f\n", Math.sinh(x));
 
     }
 
-    static double func(double x, int grade) {
-        return Math.pow(x, grade) / doubleFact(grade);
-    }
-
-    static double doubleFact(int x) {
-        if (x == 1) {
-            return 1;
+    static double func(double x, double prev, int grade) {
+        if (grade == 1) {
+            return x;
+        } else {
+            return prev * Math.pow(x, 2) / grade / (grade -1);
         }
-        return x * doubleFact(x - 1);
     }
+
 }

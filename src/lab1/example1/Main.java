@@ -6,7 +6,7 @@ public class Main {
         double x = Double.parseDouble(args[0]);
         int k = Integer.parseInt(args[1]);
 
-        double eps = Math.pow(10, k + 1);
+        double eps = 1 / Math.pow(10, k + 1);
 
         double result = 1;
 
@@ -14,7 +14,7 @@ public class Main {
 
         int grade = 1;
 
-        while(Math.abs(element) >= 1 / eps) {
+        while(Math.abs(element) >= eps) {
             element = func(x, grade);
             grade++;
             result += element;
